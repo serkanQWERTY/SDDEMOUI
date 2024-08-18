@@ -125,7 +125,7 @@ const BuildingConfiguration = () => {
 
     try {
       const response = await axios.post(
-        "https://localhost:7033/api/User/Logout",
+        "https://localhost:7033/User/Logout",
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
