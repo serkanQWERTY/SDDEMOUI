@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import axiosInstance from "../axios/axiosInstance";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import "../Register.css";
+import axios from "axios";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -9,23 +10,39 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [mailAddress, setMailAddress] = useState("");
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
 
+    const token = localStorage.getItem("token");
+
     try {
-      const response = await axiosInstance.post("User/Register", {
-        name,
-        surname,
-        username,
-        password,
-        mailAddress,
-      });
+      const response = await axios.post(
+        "https://localhost:7033/User/Register",
+        {
+          name,
+          surname,
+          username,
+          password,
+          mailAddress,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       toast(response.data.message, {
         type: response.data.isSuccess ? "success" : "error",
       });
+
+      if (response.data.isSuccess) {
+        navigate("/login");
+      }
     } catch (error) {
+      console.error("Register Error:", error.response || error.message);
       if (
         error.response &&
         error.response.data &&

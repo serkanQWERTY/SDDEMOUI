@@ -1,0 +1,155 @@
+/* Genel Konteyner */
+.building-configurations-container {
+  background: linear-gradient(to right, white, #f57f20); /* Turuncu tonlu geçiş */
+  min-height: 100vh;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Tablo Stili */
+.configurations-table {
+  width: 100%;
+  max-width: 750px; /* Tabloyu küçült */
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-top: 100px;
+  margin-bottom: 20px; /* Tablo ile buton arasında boşluk */
+}
+
+.configurations-table th,
+.configurations-table td {
+  padding: 15px; /* Daha küçük padding */
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.configurations-table th {
+  background-color: #ff7f50; /* Mercan turuncusu */
+  color: white;
+  font-weight: bold;
+}
+
+.configurations-table tr:nth-child(even) {
+  background-color: #fafafa; /* Açık gri */
+}
+
+.configurations-table tr:hover {
+  background-color: #ffe4e1; /* Hafif mercan pembesi */
+}
+
+/* Ekle Butonu */
+.add-config-button {
+  background-color: #ff7f50; /* Mercan turuncusu */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px; /* Küçük font */
+  cursor: pointer;
+  border-radius: 8px;
+  width: 450px;
+  height: 60px;
+  margin-top: 50px; /* Tablo ile buton arasında boşluk */
+  transition: background-color 0.3s ease;
+}
+
+.add-config-button:hover {
+  background-color: #ff6347; /* Koyu mercan turuncusu */
+}
+
+/* Modal Stili */
+.Modal__Overlay {
+  background: rgba(0, 0, 0, 0.7); /* Modal arka planı */
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 400px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal h2 {
+  margin-top: 0;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.modal label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #666;
+}
+
+.modal input,
+.modal select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.modal input:focus,
+.modal select:focus {
+  border-color: #ff7f50; /* Mercan turuncusu */
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 127, 80, 0.5); /* Hafif mercan turuncusu gölge */
+}
+
+.modal button {
+  background-color: #ff7f50; /* Mercan turuncusu */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.modal button:hover {
+  background-color: #ff6347; /* Koyu mercan turuncusu */
+}
+
+/* Modal Kapama Butonu */
+.modal .close-button {
+  background-color: #ddd; /* Açık gri */
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.modal .close-button:hover {
+  background-color: #ccc; /* Hafif gri */
+}
+
+/* Fade-in Animasyonu */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,53 @@
+.not-found-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, orange, #f57f20);
+    background-size: 300% 300%;
+    animation: gradientAnimation 10s ease infinite;
+  }
+  
+  .not-found-content {
+    text-align: center;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .not-found-content h1 {
+    font-size: 100px;
+    margin: 0;
+    color: #333;
+  }
+  
+  .not-found-content p {
+    font-size: 18px;
+    color: #666;
+    margin: 20px 0;
+  }
+  
+  .not-found-content button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .not-found-content button:hover {
+    background: #0056b3;
+  }
+  
+  @keyframes gradientAnimation {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+  }
+  

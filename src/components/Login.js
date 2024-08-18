@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axiosInstance from "../axios/axiosInstance";
 import { toast } from "react-toastify";
+import axios from "axios";
 import "../Login.css";
 
 const Login = () => {
@@ -13,8 +13,8 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axiosInstance.post(
-        "User/GetTokenAndLogin",
+      const response = await axios.post(
+        "https://localhost:7033/User/GetTokenAndLogin",
         {
           username,
           password,
@@ -22,9 +22,9 @@ const Login = () => {
       );
 
       if (response.data.isSuccess) {
-        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("token", response.data.dataToReturn.token);
         toast.success(response.data.message);
-        //navigate("/home");
+        navigate("/configuration");
       } else {
         toast.error(response.data.message);
       }
@@ -41,7 +41,7 @@ const Login = () => {
     <div className="login-container">
       <form onSubmit={handleLogin}>
         <div className="form-group">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username">Kullanıcı Adı</label>
           <input
             type="text"
             id="username"
@@ -51,7 +51,7 @@ const Login = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Şifre</label>
           <input
             type="password"
             id="password"
@@ -60,7 +60,7 @@ const Login = () => {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Giriş Yap</button>
         <button type="button" onClick={handleRegisterRedirect}>
           Üye Ol
         </button>
