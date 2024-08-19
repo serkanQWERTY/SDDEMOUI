@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import Register from "./components/Register";
 import BuildingConfiguration from "./components/BuildingConfiguration";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -19,7 +20,10 @@ function App() {
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/configuration" element={<BuildingConfiguration />} />
+        <Route
+          path="/configuration"
+          element={<PrivateRoute element={<BuildingConfiguration />} />}
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <ToastContainer

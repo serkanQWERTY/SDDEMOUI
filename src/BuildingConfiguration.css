@@ -1,155 +1,200 @@
-/* Genel Konteyner */
-.building-configurations-container {
-  background: linear-gradient(to right, white, #f57f20); /* Turuncu tonlu geçiş */
-  min-height: 100vh;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: 'Arial', sans-serif;
+/* BuildingConfiguration.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Tablo Stili */
+.building-configurations-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+  padding: 20px;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .configurations-table {
-  width: 100%;
-  max-width: 750px; /* Tabloyu küçült */
-  border-collapse: collapse;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 90%;
+  max-width: 800px;
+  margin-bottom: 20px;
   overflow: hidden;
-  margin-top: 100px;
-  margin-bottom: 20px; /* Tablo ile buton arasında boşluk */
 }
 
 .configurations-table th,
 .configurations-table td {
-  padding: 15px; /* Daha küçük padding */
+  padding: 15px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .configurations-table th {
-  background-color: #ff7f50; /* Mercan turuncusu */
+  background-color: rgba(74, 144, 226, 0.7);
   color: white;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .configurations-table tr:nth-child(even) {
-  background-color: #fafafa; /* Açık gri */
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .configurations-table tr:hover {
-  background-color: #ffe4e1; /* Hafif mercan pembesi */
+  background-color: rgba(74, 144, 226, 0.1);
 }
 
-/* Ekle Butonu */
-.add-config-button {
-  background-color: #ff7f50; /* Mercan turuncusu */
-  color: white;
+.add-config-button,
+.logout-button {
+  width: 90%;
+  max-width: 400px;
+  padding: 12px;
   border: none;
-  padding: 12px 24px;
-  font-size: 16px; /* Küçük font */
-  cursor: pointer;
   border-radius: 8px;
-  width: 450px;
-  height: 60px;
-  margin-top: 50px; /* Tablo ile buton arasında boşluk */
-  transition: background-color 0.3s ease;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+  margin: 10px 0;
 }
 
-.add-config-button:hover {
-  background-color: #ff6347; /* Koyu mercan turuncusu */
+.add-config-button {
+  background: #4a90e2;
+  color: #fff;
 }
 
-/* Modal Stili */
-.Modal__Overlay {
-  background: rgba(0, 0, 0, 0.7); /* Modal arka planı */
+.logout-button {
+  background: #fff;
+  color: #4a90e2;
+  border: 2px solid #4a90e2;
 }
 
-.modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 12px;
-  width: 400px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.3s ease-out;
+.logout-button:hover {
+  background: #f0f8ff;
+}
+
+.add-config-button:active,
+.logout-button:active {
+  transform: scale(0.98);
 }
 
 .modal h2 {
-  margin-top: 0;
-  font-size: 24px;
-  color: #333;
   margin-bottom: 20px;
+  color: #333;
+  font-weight: 600;
 }
 
 .modal label {
   display: block;
-  margin-bottom: 10px;
-  font-weight: bold;
-  color: #666;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #555;
+  font-size: 14px;
 }
 
 .modal input,
 .modal select {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
+  padding: 12px;
   border: 1px solid #ddd;
-  border-radius: 6px;
-  box-sizing: border-box;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 15px;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .modal input:focus,
 .modal select:focus {
-  border-color: #ff7f50; /* Mercan turuncusu */
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
   outline: none;
-  box-shadow: 0 0 5px rgba(255, 127, 80, 0.5); /* Hafif mercan turuncusu gölge */
 }
 
 .modal button {
-  background-color: #ff7f50; /* Mercan turuncusu */
-  color: white;
+  width: 100%;
+  padding: 12px;
   border: none;
-  padding: 12px 24px;
-  font-size: 16px;
-  cursor: pointer;
   border-radius: 8px;
-  margin-right: 10px;
-  transition: background-color 0.3s ease;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+  margin-top: 10px;
 }
 
-.modal button:hover {
-  background-color: #ff6347; /* Koyu mercan turuncusu */
+.modal button:first-of-type {
+  background: #4a90e2;
+  color: #fff;
 }
 
-/* Modal Kapama Butonu */
-.modal .close-button {
-  background-color: #ddd; /* Açık gri */
-  color: #333;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 8px;
-  margin-left: 10px;
-  transition: background-color 0.3s ease;
+.modal button:last-of-type {
+  background: #fff;
+  color: #4a90e2;
+  border: 2px solid #4a90e2;
 }
 
 .modal .close-button:hover {
-  background-color: #ccc; /* Hafif gri */
+  background: #f0f8ff;
 }
 
-/* Fade-in Animasyonu */
+.modal .add-button:hover {
+  background: #3a7bc8;
+}
+
+.modal button:active {
+  transform: scale(0.98);
+}
+
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Gri şeffaf arka plan */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 30px;
+  width: 90%;
+  max-width: 400px;
+  animation: fadeIn 0.5s ease-out; /* Modal fade-in animasyonu */
+}
+
+.modal .building-cost{
+  width: 375px;
+}
+
+.modal .construction-time{
+  width: 375px;
 }

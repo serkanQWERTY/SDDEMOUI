@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Modal from "react-modal";
-import { useNavigate } from "react-router-dom"; // useHistory yerine useNavigate import edildi
+import { useNavigate } from "react-router-dom";
 import "../BuildingConfiguration.css";
 
 Modal.setAppElement("#root");
@@ -17,7 +17,7 @@ const BuildingConfiguration = () => {
     constructionTime: "",
   });
 
-  const navigate = useNavigate(); // useHistory yerine useNavigate kullanıldı
+  const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -97,10 +97,11 @@ const BuildingConfiguration = () => {
       );
       toast.success(response.data.message);
       setModalIsOpen(false);
-      setConfigurations((prevConfigs) => [
-        ...prevConfigs,
-        { ...updatedConfig, id: prevConfigs.length + 1 },
-      ]);
+      setConfigurations((prevConfigs) => {
+        return Array.isArray(prevConfigs)
+          ? [...prevConfigs, updatedConfig]
+          : [updatedConfig];
+      });
     } catch (error) {
       console.error("Error adding building configuration:", error);
       toast.error("Bir hata oluştu. Lütfen tekrar deneyin.");
@@ -132,7 +133,6 @@ const BuildingConfiguration = () => {
         }
       );
 
-      // API'den dönen veriyi kontrol edin
       if (response.status === 200 || response.data.isSuccess) {
         localStorage.removeItem("token");
         navigate("/login");
@@ -143,13 +143,11 @@ const BuildingConfiguration = () => {
     } catch (error) {
       console.error("Error during logout:", error);
       if (error.response) {
-        // Sunucu yanıtı varsa hata mesajını göster
         toast.error(
           error.response.data.message ||
             "Bir hata oluştu. Lütfen tekrar deneyin."
         );
       } else {
-        // Sunucu yanıtı yoksa genel hata mesajını göster
         toast.error("Bir hata oluştu. Lütfen tekrar deneyin.");
       }
     }
@@ -171,13 +169,19 @@ const BuildingConfiguration = () => {
           </tr>
         </thead>
         <tbody>
-          {configurations.map((config) => (
-            <tr key={config.id}>
-              <td>{getBuildingTypeNameById(config.buildingType)}</td>
-              <td>{config.buildingCost}</td>
-              <td>{config.constructionTime}</td>
+          {configurations && configurations.length > 0 ? (
+            configurations.map((config, index) => (
+              <tr key={index}>
+                <td>{getBuildingTypeNameById(config.buildingType)}</td>
+                <td>{config.buildingCost}</td>
+                <td>{config.constructionTime}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="3">Kayıt bulunamadı.</td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
 
@@ -193,6 +197,7 @@ const BuildingConfiguration = () => {
         isOpen={modalIsOpen}
         onRequestClose={handleCloseModal}
         className="modal"
+        overlayClassName="modal-overlay"
       >
         <h2>Yeni Yapı Ekle</h2>
         <label htmlFor="buildingType">Yapı Türü</label>
@@ -210,6 +215,7 @@ const BuildingConfiguration = () => {
         </select>
         <label htmlFor="buildingCost">Yapı Maliyeti</label>
         <input
+          className="building-cost"
           type="number"
           id="buildingCost"
           value={newConfig.buildingCost}
@@ -217,13 +223,18 @@ const BuildingConfiguration = () => {
         />
         <label htmlFor="constructionTime">İnşaat Süresi (saniye)</label>
         <input
+          className="construction-time"
           type="number"
           id="constructionTime"
           value={newConfig.constructionTime}
           onChange={handleInputChange}
         />
-        <button onClick={handleAddConfig}>Ekle</button>
-        <button onClick={handleCloseModal}>Kapat</button>
+        <button className="add-button" onClick={handleAddConfig}>
+          Ekle
+        </button>
+        <button className="close-button" onClick={handleCloseModal}>
+          Kapat
+        </button>
       </Modal>
     </div>
   );

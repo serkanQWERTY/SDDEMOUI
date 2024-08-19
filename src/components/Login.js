@@ -39,7 +39,8 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <form onSubmit={handleLogin}>
+      <form className="login-form" onSubmit={handleLogin}>
+        <h2>Giriş Yap</h2>
         <div className="form-group">
           <label htmlFor="username">Kullanıcı Adı</label>
           <input
@@ -60,8 +61,14 @@ const Login = () => {
             required
           />
         </div>
-        <button type="submit">Giriş Yap</button>
-        <button type="button" onClick={handleRegisterRedirect}>
+        <button type="submit" className="login-button">
+          Giriş Yap
+        </button>
+        <button
+          type="button"
+          className="register-button"
+          onClick={handleRegisterRedirect}
+        >
           Üye Ol
         </button>
       </form>

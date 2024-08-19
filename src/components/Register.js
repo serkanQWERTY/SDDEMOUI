@@ -55,11 +55,16 @@ const Register = () => {
     }
   };
 
+  const handleBackToLogin = () => {
+    navigate("/login");
+  };
+
   return (
     <div className="register-container">
-      <form onSubmit={handleRegister}>
+      <form className="register-form" onSubmit={handleRegister}>
+        <h2>Üye Ol</h2>
         <div className="form-group">
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Ad</label>
           <input
             type="text"
             id="name"
@@ -69,7 +74,7 @@ const Register = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="surname">Surname</label>
+          <label htmlFor="surname">Soyad</label>
           <input
             type="text"
             id="surname"
@@ -79,7 +84,7 @@ const Register = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username">Kullanıcı Adı</label>
           <input
             type="text"
             id="username"
@@ -89,7 +94,7 @@ const Register = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Şifre</label>
           <input
             type="password"
             id="password"
@@ -99,7 +104,7 @@ const Register = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="mailAddress">Mail Address</label>
+          <label htmlFor="mailAddress">E-posta Adresi</label>
           <input
             type="email"
             id="mailAddress"
@@ -108,7 +113,14 @@ const Register = () => {
             required
           />
         </div>
-        <button type="submit">Register</button>
+        <button type="submit">Üye Ol</button>
+        <button
+          type="button"
+          className="back-button"
+          onClick={handleBackToLogin}
+        >
+          Giriş Sayfasına Dön
+        </button>
       </form>
     </div>
   );
