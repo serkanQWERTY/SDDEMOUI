@@ -29,9 +29,11 @@ const Login = () => {
         toast.error(response.data.message);
       }
     } catch (error) {
-      error.response
-        ? error.response.data.message
-        : "Bir hata oluştu. Lütfen tekrar deneyin.";
+      if (error.response) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("Bir hata oluştu. Lütfen tekrar deneyin.");
+      }
     }
   };
 
