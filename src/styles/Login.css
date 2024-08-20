@@ -1,4 +1,3 @@
-/* Register.css */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 body {
@@ -6,11 +5,11 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-.register-container {
+.login-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 100vh;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradientAnimation 15s ease infinite;
@@ -22,7 +21,7 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-.register-form {
+.login-form {
   background: rgba(255, 255, 255, 0.9);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -36,18 +35,18 @@ body {
   transition: transform 0.3s ease;
 }
 
-.register-form:hover {
+.login-form:hover {
   transform: translateY(-5px);
 }
 
-.register-form h2 {
+.login-form h2 {
   margin-bottom: 30px;
   color: #333;
   font-weight: 600;
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   text-align: left;
 }
 
@@ -79,20 +78,40 @@ button {
   padding: 12px;
   border: none;
   border-radius: 8px;
-  background: #4a90e2;
-  color: #fff;
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.1s;
 }
 
-button:hover {
+button:active {
+  transform: scale(0.98);
+}
+
+.login-button {
+  background: #4a90e2;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.login-button:hover {
   background: #3a7bc8;
 }
 
-button:active {
-  transform: scale(0.98);
+.register-button {
+  background: #fff;
+  color: #4a90e2;
+  border: 2px solid #4a90e2;
+}
+
+.register-button:hover {
+  background: #f0f8ff;
+}
+
+.error {
+  color: #e74c3c;
+  margin-top: 15px;
+  font-size: 14px;
 }
 
 @keyframes fadeIn {
@@ -100,17 +119,6 @@ button:active {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.register-form {
+.login-form {
   animation: fadeIn 0.5s ease-out;
-}
-
-.back-button {
-  margin-top: 15px;
-  background: transparent;
-  color: #4a90e2;
-  border: 2px solid #4a90e2;
-}
-
-.back-button:hover {
-  background: #f0f8ff;
 }

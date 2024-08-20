@@ -11,7 +11,7 @@ import {
 } from "react-router-dom";
 import Register from "./components/Register";
 import BuildingConfiguration from "./components/BuildingConfiguration";
-import PrivateRoute from "./components/PrivateRoute";
+import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
   return (
@@ -26,17 +26,6 @@ function App() {
         />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
     </Router>
   );
 }

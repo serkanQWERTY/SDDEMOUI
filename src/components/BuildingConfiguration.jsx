@@ -3,7 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
-import "../BuildingConfiguration.css";
+import "../styles/BuildingConfiguration.css";
 
 Modal.setAppElement("#root");
 
