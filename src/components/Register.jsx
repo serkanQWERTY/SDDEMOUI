@@ -42,16 +42,11 @@ const Register = () => {
         navigate("/login");
       }
     } catch (error) {
-      console.error("Register Error:", error.response || error.message);
-      if (
-        error.response &&
-        error.response.data &&
-        error.response.data.message
-      ) {
-        toast.error(error.response.data.message);
-      } else {
-        toast.error("Bir hata oluştu. Lütfen tekrar deneyin.");
-      }
+      toast.error(
+        error.response
+          ? error.response.data.message
+          : "Bir hata oluştu. Lütfen tekrar deneyin."
+      );
     }
   };
 

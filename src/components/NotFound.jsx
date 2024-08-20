@@ -1,12 +1,12 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import '../styles/NotFound.css';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "../styles/NotFound.css";
 
 const NotFound = () => {
   const navigate = useNavigate();
 
   const handleGoHome = () => {
-    navigate('/');
+    navigate("/");
   };
 
   return (

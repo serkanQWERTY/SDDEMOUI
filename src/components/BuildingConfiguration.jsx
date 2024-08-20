@@ -35,7 +35,11 @@ const BuildingConfiguration = () => {
       );
       setConfigurations(response.data.dataToReturn);
     } catch (error) {
-      console.error("Error fetching building configurations:", error);
+      toast.error(
+        error.response
+          ? error.response.data.message
+          : "Bir hata oluştu. Lütfen tekrar deneyin."
+      );
     }
   };
 
@@ -49,7 +53,11 @@ const BuildingConfiguration = () => {
       );
       setBuildingTypes(response.data.dataToReturn);
     } catch (error) {
-      console.error("Error fetching building types:", error);
+      toast.error(
+        error.response
+          ? error.response.data.message
+          : "Bir hata oluştu. Lütfen tekrar deneyin."
+      );
     }
   };
 
@@ -103,8 +111,11 @@ const BuildingConfiguration = () => {
           : [updatedConfig];
       });
     } catch (error) {
-      console.error("Error adding building configuration:", error);
-      toast.error("Bir hata oluştu. Lütfen tekrar deneyin.");
+      toast.error(
+        error.response
+          ? error.response.data.message
+          : "Bir hata oluştu. Lütfen tekrar deneyin."
+      );
     }
   };
 
@@ -141,15 +152,11 @@ const BuildingConfiguration = () => {
         toast.error(response.data.message || "Çıkış işlemi başarısız oldu.");
       }
     } catch (error) {
-      console.error("Error during logout:", error);
-      if (error.response) {
-        toast.error(
-          error.response.data.message ||
-            "Bir hata oluştu. Lütfen tekrar deneyin."
-        );
-      } else {
-        toast.error("Bir hata oluştu. Lütfen tekrar deneyin.");
-      }
+      toast.error(
+        error.response
+          ? error.response.data.message
+          : "Bir hata oluştu. Lütfen tekrar deneyin."
+      );
     }
   };
 
