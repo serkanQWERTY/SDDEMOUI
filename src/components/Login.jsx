@@ -58,7 +58,7 @@ const Login = () => {
         <div className="form-group">
           <label htmlFor="password">Şifre</label>
           <input
-            type="current-password"
+            type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
